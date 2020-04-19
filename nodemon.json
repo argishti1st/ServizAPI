@@ -1,0 +1,6 @@
+{
+    "env":{
+        "MONGO_ATLAS_PW" : "VardanMamikonyan",
+        "JWT_KEY" : "PIXEL4"
+    }
+}
