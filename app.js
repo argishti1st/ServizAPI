@@ -3,14 +3,11 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const servicesRouter = require('./routes/service');
 const ordersRouter = require('./routes/order');
 const userRoutes = require('./routes/user');
-//mongodb+srv://argishti1st:<password>@cluster0-4mib5.mongodb.net/test?retryWrites=true&w=majority
-console.log('sssssssssss')
-
-// mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
@@ -48,7 +45,7 @@ app.use((error, req, res, next) => {
     });
 });
 
-mongoose.connect('mongodb+srv://argishti_1st:PGO5QzncQNjqrCIy@udemynodejs-qpf3o.mongodb.net/serviX')
+mongoose.connect(`mongodb+srv://argishti_1st:${process.env.MONGO_ATLAS_PW}@udemynodejs-qpf3o.mongodb.net/serviX`)
 .then(result => {
     console.log('connected');
     app.listen(3000);
